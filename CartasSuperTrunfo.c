@@ -22,7 +22,7 @@ int main()
 
 
     int codigo;
-    char nomeDaCidade[50];
+    char  nomeDaCidade[50];
     long int populacao;
     double area;
     double pib;
@@ -43,12 +43,11 @@ int main()
 
 
     printf("Codigo da cidade: %d\n", codigo);
-    printf(" Nome da cidade: %s\n" nomeDaCidade);
+    printf("Nome da cidade: %s\n", nomeDaCidade);
     printf("População: %ld\n", populacao);
-    printf("")
-    
-
-    
+    printf("Area da cidade: %lf\n km", area);
+    printf("pib populacional: %lf\n", pib);
+    printf("Pontos tutisticos: %d", pontosTuristicos);
 
     return 0;
 }
