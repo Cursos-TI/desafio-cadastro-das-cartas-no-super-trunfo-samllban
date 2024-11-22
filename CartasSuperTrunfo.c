@@ -20,33 +20,35 @@ int main()
 
     printf("cartas\n");
 
-    // notava
 
-    // paises -> 8 estados(A - H) -> 4 cidades(1-4)
-    // combinação da letra e do numero - fara o codigo da carta - A01
-
-    int populacao;
-    char codigos[4];
+    int codigo;
+    char nomeDaCidade[50];
+    long int populacao;
+    double area;
+    double pib;
     int pontosTuristicos;
-    float area;
-    float pib;
 
-    void cadastrarCidade(int i, char codigo[4])
-    {
-        snprintf(codigos[i], 4, "%s", codigo);
+    printf("Digite o codigo da cidade: ");
+    scanf("%d", &codigo);
+    printf("Digite o nome da cidade: ");
+    fgets(nomeDaCidade, 50, stdin);
+    printf("Digite populacao: ");
+    scanf("%ld", &populacao);
+    printf("Digite a area da cidade: ");
+    scanf("%lf", &area);
+    printf("Digite o pib da cidade:");
+    scanf("%lf", &pib);
+    printf("Quantidade de pontos turisticos: ");
+    scanf("%d", &pontosTuristicos);
 
-        printf("Cadastro da cidade %s:\n", codigo);
-        printf("Digite a populacao: ");
-        scanf("%d", &populacao[indice]);
-        printf("Digite a area (em km²): ");
-        scanf("%f", &area[indice]);
-        printf("Digite o PIB (em bilhões): ");
-        scanf("%f", &pib[indice]);
-        printf("Digite o número de pontos turísticos: ");
-        scanf("%d", &pontosTuristicos[indice]);
-        printf("\n");
-        
-    }
+
+    printf("Codigo da cidade: %d\n", codigo);
+    printf(" Nome da cidade: %s\n" nomeDaCidade);
+    printf("População: %ld\n", populacao);
+    printf("")
+    
+
+    
 
     return 0;
 }
