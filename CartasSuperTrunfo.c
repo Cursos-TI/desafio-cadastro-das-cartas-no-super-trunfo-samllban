@@ -45,7 +45,7 @@ void gerarCodigo(char estado, int numCidade, char * codigo) {
 }
 
 double superPoderCalculador( const Cidade * cidade) {
-    return cidade -> populacao + cidade -> area + cidade -> pib + cidade -> pontosTuristicos
+    return cidade -> populacao + cidade -> area + cidade -> pib + cidade -> pontosTuristicos;
 }
 
 
@@ -53,61 +53,64 @@ void compararCartas( const Cidade * cidade1, const Cidade * cidade2) {
 
     //população 
     if(cidade1 -> populacao > cidade2 -> populacao) {
-        printf("População da cidade: %s, vence com %lf numero de habitantes", cidade1 ->codigo, cidade1->populacao);
+        printf("População da cidade: %s, vence com %ld numero de habitantes\n", cidade1 ->codigo, cidade1->populacao);
     }
     else if(cidade2 -> populacao > cidade1 -> populacao) {
-        printf("População da cidade: %s, vence com %lf numero de habitantes",cidade2 -> codigo, cidade2->populacao);
+        printf("População da cidade: %s, vence com %ld numero de habitantes\n",cidade2 -> codigo, cidade2->populacao);
     }
     else {
-        printf("Valores populacionais iguais");
+        printf("Valores populacionais iguais\n");
     }
 
     //area
 
     if( cidade1 -> area > cidade2 -> area) {
-        printf("Area da cidade: %s, vence com %lf numeros de area", cidade1 -> codigo, cidade1 -> area);
+        printf("Area da cidade: %s, vence com %lf numeros de area\n", cidade1 -> codigo, cidade1 -> area);
     } else if (cidade2 -> area > cidade2 -> area) {
-        printf("Area da cidade: %s, vence com %lf numeros de area", cidade2 -> codigo, cidade2 -> area);
+        printf("Area da cidade: %s, vence com %lf numeros de area\n", cidade2 -> codigo, cidade2 -> area);
     } else {
-        printf("Valores de area iguais");
+        printf("Valores de area iguais\n");
     }
 
     //pib 
 
     if( cidade1 -> pib> cidade2 -> pib) {
-        printf("Pib da cidade: %s, vence com %lf ", cidade1 -> codigo, cidade1 -> pib);
+        printf("Pib da cidade: %s, vence com %lf\n ", cidade1 -> codigo, cidade1 -> pib);
     } else if (cidade2 -> area > cidade2 -> area) {
-        printf("Area da cidade: %s, vence com %lf", cidade2 -> codigo, cidade2 -> area);
+        printf("Area da cidade: %s, vence com %lf\n", cidade2 -> codigo, cidade2 -> area);
     } else {
-        printf("Valores do pib iguais");
+        printf("Valores do pib iguais\n");
     }
 
     //pontos turisticos
 
     if( cidade1 -> pontosTuristicos> cidade2 -> pontosTuristicos) {
-        printf("Ponto turiticos da cidade: %s, vence com %lf ", cidade1 -> codigo, cidade1 -> pontosTuriticos);
+        printf("Ponto turiticos da cidade: %s, vence com %d\n ", cidade1 -> codigo, cidade1 -> pontosTuristicos);
     } else if (cidade2 -> area > cidade2 -> area) {
-        printf("Pontos turisticos da cidade : %s, vence com %lf", cidade2 -> codigo, cidade2 -> pontosTuristicos);
+        printf("Pontos turisticos da cidade : %s, vence com %d\n", cidade2 -> codigo, cidade2 -> pontosTuristicos);
     } else {
-        printf("Valores dos pontos turisticos são iguais");
+        printf("Valores dos pontos turisticos são iguais\n");
     }
 
     double superPoder1 = superPoderCalculador(cidade1);
     double superPoder2 = superPoderCalculador(cidade2);
 
-    if(superPoder1 > superPoder2)) {
-        printf("Cidade %s vence com super poder de %lf", cidade1 -> codigo, superPoder1);
+
+    printf("Super Poder:\n");
+    if(superPoder1 > superPoder2) {
+        printf("Cidade %s vence com super poder de %lf\n", cidade1 -> codigo, superPoder1);
     } else if( superPoder2 > superPoder1) {
-        printf("Cidade %s vence com super de %lf", cidade2 ->codigo, superPoder2 );
+        printf("Cidade %s vence com super de %lf\n", cidade2 ->codigo, superPoder2 );
     } else {
-        printf("Valores dos super poderes iguais");
+        printf("Valores dos super poderes iguais\n");
     }
-        
 }
 
 int main(){
 
     Cidade cidades[2][2];
+    char codigo1[5], codigo2[5];
+    Cidade * cidade1 = NULL, * cidade2 = NULL;
 
     for( char estado = 'A'; estado<= 'B'; estado++) {
         for (int numCidade = 1; numCidade <= 2; numCidade++) {
@@ -124,6 +127,29 @@ int main(){
         for(int numCidade = 1; numCidade<=2; numCidade++ ) {
             exibirCidades(&cidades[estado - 'A'][numCidade - 1]);
         }
+    }
+
+    printf("Digite o codigo da cidade: ");
+    scanf("%s", codigo1);
+    printf("Digite o codigo da cidade: ");
+    scanf("%s", codigo2);
+    
+
+    for(int i = 0; i < 2; i++) {
+        for( int j = 0 ;i < 2; j ++) {
+            if(strcmp(cidades[i][j].codigo, codigo1 ) == 0){
+                cidade1 = &cidades[i][j];
+            }
+            if(strcmp(cidades[i][j].codigo, codigo2 ) == 0){
+                cidade2 = &cidades[i][j];
+            }
+        }
+    }
+
+    if(cidade1 && cidade2) {
+        compararCartas(cidade1, cidade2);
+    } else {
+        printf("Cidade não encontrada!!!\n");
     }
     return 0;
 }
